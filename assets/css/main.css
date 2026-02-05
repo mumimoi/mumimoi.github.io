@@ -46,10 +46,11 @@ code {
   font-size: 0.95em;
 }
 
-.container {
+.container{
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 16px;
+  padding-left: clamp(12px, 3vw, 24px);
+  padding-right: clamp(12px, 3vw, 24px);
 }
 
 .page {
