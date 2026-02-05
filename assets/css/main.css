@@ -285,16 +285,29 @@ code {
   margin-bottom: 12px;
 }
 
-@media (min-width: 900px){
-  .novel-card{
-    display: grid;
-    grid-template-columns: 110px 1fr;
-    gap: 14px;
-    align-items: start;
-  }
-  .novel-cover{
-    margin-bottom: 0;
-  }
+.novel-card.has-cover{
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+}
+
+.novel-card-body{
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.novel-card.has-cover .novel-cover{
+  flex: 0 0 clamp(72px, 25%, 110px);
+  width: clamp(72px, 25%, 110px);
+  margin-bottom: 0;
+}
+
+.novel-card-meta{
+  margin-top: auto;
+  text-align: center;
+  padding-top: 10px;
 }
 
 .novel-header { margin-bottom: 14px; }
