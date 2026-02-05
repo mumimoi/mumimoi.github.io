@@ -317,7 +317,10 @@ code {
   background: var(--panel);
 }
 
-.font-slider { width: 160px; }
+.font-slider {
+  width: 160px;
+  accent-color: var(--accent);
+}
 
 .reader {
   background: var(--panel);
