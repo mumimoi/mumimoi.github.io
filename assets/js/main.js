@@ -210,3 +210,56 @@
 
   window.addEventListener("resize", update);
 })();
+
+(() => {
+  // buat tombol
+  const btn = document.createElement("button");
+  btn.className = "to-top";
+  btn.type = "button";
+  btn.setAttribute("aria-label", "Kembali ke atas");
+  btn.innerHTML = `
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 5l-6 6m6-6l6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 19V6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+  `;
+  document.body.appendChild(btn);
+
+  const prefersReduced = () =>
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: prefersReduced() ? "auto" : "smooth" });
+  });
+
+  const isPageScrollable = () =>
+    document.documentElement.scrollHeight > window.innerHeight + 2;
+
+  const update = () => {
+    const canScrollUp = window.scrollY > 2;
+    const scrollable = isPageScrollable();
+
+    // aturan kamu:
+    // - kalau tidak bisa scroll ke atas -> tidak muncul
+    // - kalau halaman tidak scrollable / tidak ada scrollbar -> tidak muncul
+    const show = scrollable && canScrollUp;
+
+    btn.classList.toggle("is-visible", show);
+  };
+
+  let ticking = false;
+  const onScrollOrResize = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      update();
+      ticking = false;
+    });
+  };
+
+  window.addEventListener("scroll", onScrollOrResize, { passive: true });
+  window.addEventListener("resize", onScrollOrResize);
+
+  // initial
+  update();
+})();
