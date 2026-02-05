@@ -12,6 +12,7 @@
 
   --radius: 14px;
   --container: 980px;
+  --gutter: clamp(16px, 4vw, 32px);
 
   --reader-font-size: 18px;
 }
@@ -49,8 +50,8 @@ code {
 .container{
   max-width: var(--container);
   margin: 0 auto;
-  padding-left: clamp(12px, 3vw, 24px);
-  padding-right: clamp(12px, 3vw, 24px);
+  padding-left: max(env(safe-area-inset-left), var(--gutter));
+  padding-right: max(env(safe-area-inset-right), var(--gutter));
 }
 
 .page{
