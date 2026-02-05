@@ -285,30 +285,28 @@ code {
   margin-bottom: 12px;
 }
 
-.novel-card.has-cover .novel-card-body{
-  display: contents;
-}
-
 .novel-card.has-cover .novel-cover{
   float: left;
   width: clamp(84px, 25%, 120px);
   height: auto;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  margin: 0 14px 12px 0;
-}
-
-.novel-card.has-cover .novel-card-meta{
+  aspect-ratio: auto;
+  object-fit: unset;
+  margin: 2px 14px 12px 0;
+  border-radius: calc(var(--radius) - 4px);
+  border: 1px solid var(--border);
   display: block;
-  clear: both;
-  text-align: center;
-  padding-top: 10px;
 }
 
 .novel-card.has-cover::after{
   content: "";
   display: block;
   clear: both;
+}
+
+.novel-card.has-cover .novel-card-meta{
+  clear: both;
+  text-align: center;
+  margin-top: 12px;
 }
 
 .novel-header { margin-bottom: 14px; }
