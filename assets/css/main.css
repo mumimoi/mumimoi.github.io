@@ -204,6 +204,44 @@ code {
 .theme-menu button:hover { background: rgba(255,255,255,.06); }
 :root[data-theme="light"] .theme-menu button:hover { background: rgba(0,0,0,.05); }
 
+/* Scroll to top button */
+.to-top{
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  width: clamp(42px, 7vw, 48px);
+  height: clamp(42px, 7vw, 48px);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+
+  color: var(--accent);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+
+  transition: opacity 160ms ease, transform 160ms ease, border-color 160ms ease;
+}
+
+.to-top.is-visible{
+  opacity: .92;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.to-top:hover{ border-color: var(--accent); }
+.to-top:active{ transform: translateY(1px); }
+
+@media (prefers-reduced-motion: reduce){
+  .to-top{ transition: none; }
+}
+
 /* Home grid */
 .grid {
   display: grid;
