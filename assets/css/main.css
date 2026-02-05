@@ -75,7 +75,7 @@ code {
   position: sticky;
   top: 0;
   z-index: 50;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--accent) !important;
   background: rgba(0,0,0,.75);
   backdrop-filter: blur(10px);
 }
@@ -399,6 +399,3 @@ code {
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; }
 }
-
-/* TEST: kalau garisnya dari topbar, ini pasti kelihatan merah */
-.topbar { border-bottom: 4px solid red !important; }
