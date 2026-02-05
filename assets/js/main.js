@@ -166,3 +166,40 @@
     initChapterMore();
   });
 })();
+
+(() => {
+  const topbar = document.querySelector(".topbar");
+  if (!topbar) return;
+
+  let lastY = window.scrollY;
+  let ticking = false;
+  const threshold = 12; // biar tidak jitter saat scroll kecil-kecil
+
+  function onScroll() {
+    const y = window.scrollY;
+
+    // selalu tampilkan saat dekat atas
+    if (y <= 10) {
+      topbar.classList.remove("is-hidden");
+      lastY = y;
+      return;
+    }
+
+    const dy = y - lastY;
+
+    if (Math.abs(dy) >= threshold) {
+      if (dy > 0) topbar.classList.add("is-hidden");   // scroll turun -> hide
+      else topbar.classList.remove("is-hidden");       // scroll naik -> show
+      lastY = y;
+    }
+  }
+
+  window.addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      onScroll();
+      ticking = false;
+    });
+  }, { passive: true });
+})();
