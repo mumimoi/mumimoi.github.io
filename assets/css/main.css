@@ -53,8 +53,9 @@ code {
   padding-right: clamp(12px, 3vw, 24px);
 }
 
-.page {
-  padding: 18px 0 40px;
+.page{
+  padding-top: 18px;
+  padding-bottom: 40px;
 }
 
 .skip {
@@ -79,12 +80,13 @@ code {
 }
 :root[data-theme="light"] .topbar { background: rgba(255,255,255,.85); }
 
-.topbar-inner {
+.topbar-inner{
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 12px 0;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .brand {
