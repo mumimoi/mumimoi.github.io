@@ -148,17 +148,27 @@ code {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 10px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: var(--panel);
+  padding: 6px;              /* boleh 4px kalau mau lebih rapat */
+  border: 0;
+  background: transparent;
+  border-radius: 999px;
   color: var(--text);
   cursor: pointer;
   user-select: none;
 }
 
-.icon-btn:hover { border-color: rgba(255,255,255,.18); }
-:root[data-theme="light"] .icon-btn:hover { border-color: rgba(0,0,0,.15); }
+/* optional: kasih highlight tipis saat hover (bukan kotak permanen) */
+.icon-btn:hover { background: rgba(255,255,255,.06); }
+:root[data-theme="light"] .icon-btn:hover { background: rgba(0,0,0,.06); }
+
+/* optional: biar tetap enak buat keyboard */
+.icon-btn:focus-visible {
+  outline: 2px solid rgba(255,255,255,.25);
+  outline-offset: 2px;
+}
+:root[data-theme="light"] .icon-btn:focus-visible {
+  outline-color: rgba(0,0,0,.25);
+}
 
 /* Theme menu */
 .theme-switcher { position: relative; }
