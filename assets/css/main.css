@@ -370,8 +370,29 @@ code {
 
 @media (max-width: 720px) {
   .grid { grid-template-columns: 1fr; }
-  .font-slider { width: 130px; }
   .reader { padding: 16px 14px; }
+
+  .reader-controls {
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav-group { flex: 0 0 auto; }
+
+  .font-group {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 6px 8px;
+    gap: 8px;
+  }
+
+  .font-slider {
+    width: 100%;
+    min-width: 80px;
+  }
+
+  .reader-controls .btn { padding: 8px 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
