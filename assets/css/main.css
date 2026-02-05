@@ -251,7 +251,8 @@ code {
 
 .novel-card {
   display: block;
-  padding: 14px;
+  position: relative;
+  padding: 14px 14px 54px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: var(--panel);
@@ -303,10 +304,13 @@ code {
   clear: both;
 }
 
-.novel-card.has-cover .novel-card-meta{
-  clear: both;
+.novel-card-meta{
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
   text-align: center;
-  margin-top: 12px;
+  margin: 0;
 }
 
 .novel-header { margin-bottom: 14px; }
