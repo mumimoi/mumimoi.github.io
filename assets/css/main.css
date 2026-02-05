@@ -291,7 +291,7 @@ code {
   height: auto;
   aspect-ratio: auto;
   object-fit: unset;
-  margin: 2px 14px 0 0;
+  margin: 2px 14px 12px 0;
   border-radius: calc(var(--radius) - 4px);
   border: 1px solid var(--border);
   display: block;
