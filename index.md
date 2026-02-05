@@ -16,11 +16,9 @@ title: Home
              loading="lazy">
       {% endif %}
 
-      <div class="novel-card-body">
-        <div class="novel-card-title">{{ n.title }}</div>
-        {% if n.description %}<div class="novel-card-desc">{{ n.description }}</div>{% endif %}
-        <div class="novel-card-meta muted small">Klik untuk lihat daftar chapter</div>
-      </div>
+      <div class="novel-card-title">{{ n.title }}</div>
+      {% if n.description %}<div class="novel-card-desc">{{ n.description }}</div>{% endif %}
+      <div class="novel-card-meta muted small">Klik untuk lihat daftar chapter</div>
     </a>
   {% endfor %}
 
