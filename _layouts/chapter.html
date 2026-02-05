@@ -1,0 +1,79 @@
+---
+layout: default
+---
+
+{% assign novel_id = page.novel %}
+{% assign novel_doc = site.novels | where: "slug", novel_id | first %}
+{% assign chapters = site.chapters | where: "novel", novel_id | sort: "chapter" %}
+
+{% assign prev_ch = nil %}
+{% assign next_ch = nil %}
+{% assign found = false %}
+
+{% for ch in chapters %}
+  {% if found and next_ch == nil %}
+    {% assign next_ch = ch %}
+  {% endif %}
+
+  {% if ch.url == page.url %}
+    {% assign found = true %}
+  {% else %}
+    {% if found == false %}
+      {% assign prev_ch = ch %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<div class="breadcrumb">
+  <a href="{{ '/' | relative_url }}">Home</a>
+  <span aria-hidden="true">/</span>
+  {% if novel_doc %}
+    <a href="{{ novel_doc.url | relative_url }}">{{ novel_doc.title }}</a>
+  {% else %}
+    <span>{{ novel_id }}</span>
+  {% endif %}
+  <span aria-hidden="true">/</span>
+  <span>{{ page.title }}</span>
+</div>
+
+<header class="reader-header">
+  <div class="reader-title">
+    <h1 class="chapter-title">{{ page.title }}</h1>
+    <div class="muted small">Chapter {{ page.chapter }}</div>
+  </div>
+
+  <div class="reader-controls" data-reader-controls>
+    <div class="nav-group">
+      {% if prev_ch %}
+        <a class="btn" href="{{ prev_ch.url | relative_url }}" rel="prev">Prev</a>
+      {% else %}
+        <span class="btn is-disabled" aria-disabled="true">Prev</span>
+      {% endif %}
+
+      {% if next_ch %}
+        <a class="btn" href="{{ next_ch.url | relative_url }}" rel="next">Next</a>
+      {% else %}
+        <span class="btn is-disabled" aria-disabled="true">Next</span>
+      {% endif %}
+    </div>
+
+    <div class="font-group" aria-label="Pengaturan font">
+      <button class="icon-btn" type="button" data-font-action="dec" aria-label="Kecilkan font">A−</button>
+      <input class="font-slider" type="range" min="14" max="28" step="1" value="18" data-font-slider aria-label="Ukuran font">
+      <button class="icon-btn" type="button" data-font-action="inc" aria-label="Besarkan font">A+</button>
+    </div>
+  </div>
+</header>
+
+<article class="reader" data-reader>
+  {{ content }}
+</article>
+
+<div class="reader-footer-nav">
+  {% if prev_ch %}
+    <a class="link" href="{{ prev_ch.url | relative_url }}" rel="prev">← {{ prev_ch.title }}</a>
+  {% endif %}
+  {% if next_ch %}
+    <a class="link" href="{{ next_ch.url | relative_url }}" rel="next">{{ next_ch.title }} →</a>
+  {% endif %}
+</div>

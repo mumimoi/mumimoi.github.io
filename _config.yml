@@ -1,0 +1,35 @@
+# Jekyll config for GitHub Pages
+
+title: "Novel Reader"
+description: "Minimalis reader untuk manga/webnovel"
+
+# Jika ini Project Site: isi baseurl dengan "/nama-repo"
+# Jika ini User Site (username.github.io): biarkan kosong
+url: ""
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+collections:
+  novels:
+    output: true
+    permalink: /novel/:name/
+  chapters:
+    output: true
+    # gunakan struktur folder: _chapters/<novel-slug>/<chapter-id>.md
+    # contoh: _chapters/lotm/001.md -> /read/lotm/001/
+    permalink: /read/:path/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

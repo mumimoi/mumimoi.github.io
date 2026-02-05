@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+{% assign novel_id = page.slug %}
+{% assign chapters_all = site.chapters | where: "novel", novel_id | sort: "chapter" %}
+
+<div class="breadcrumb">
+  <a href="{{ '/' | relative_url }}">Home</a>
+  <span aria-hidden="true">/</span>
+  <span>{{ page.title }}</span>
+</div>
+
+<header class="novel-header">
+  <h1 class="novel-title">{{ page.title }}</h1>
+  {% if page.author %}<div class="muted">{{ page.author }}</div>{% endif %}
+  {% if page.description %}<p class="novel-desc">{{ page.description }}</p>{% endif %}
+</header>
+
+<section class="card">
+  <div class="card-head">
+    <h2 class="card-title">Daftar Chapter</h2>
+    {% if chapters_all.size > 30 %}
+      <button class="btn" type="button" data-chapter-toggle>More</button>
+    {% endif %}
+  </div>
+
+  <div class="chapter-box" data-chapter-list>
+    <ol class="chapter-list">
+      {% for ch in chapters_all %}
+        {% assign is_extra = false %}
+        {% if forloop.index0 >= 30 %}{% assign is_extra = true %}{% endif %}
+        <li class="chapter-item {% if is_extra %}is-extra{% endif %}">
+          <a class="chapter-link" href="{{ ch.url | relative_url }}">
+            <span class="chapter-num">{{ ch.chapter }}</span>
+            <span class="chapter-name">{{ ch.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+
+  {% if chapters_all.size == 0 %}
+    <p class="muted" style="margin-top:12px">Belum ada chapter untuk novel ini.</p>
+  {% endif %}
+
+  {% if chapters_all.size > 30 %}
+    <p class="muted small" style="margin-top:10px">Tip: setelah klik <strong>More</strong>, daftar chapter akan bisa di-scroll di dalam kotaknya.</p>
+  {% endif %}
+</section>

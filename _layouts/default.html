@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    <a class="skip" href="#main">Lewati ke konten</a>
+
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <div class="topbar-actions">
+          {% include theme_switcher.html %}
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="container page">
+      {{ content }}
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="muted">© {{ site.time | date: '%Y' }} · Dibuat dengan Jekyll</div>
+        <div class="muted">Tema: minimalis · Reader: prev/next + font size + dark/light</div>
+      </div>
+    </footer>
+  </body>
+</html>
