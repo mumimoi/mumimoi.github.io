@@ -1,0 +1,50 @@
+---
+layout: default
+title: "404 — Page not found"
+permalink: /404.html
+---
+
+<div class="card">
+  <h1 style="margin:0 0 6px;">404</h1>
+  <p class="muted" style="margin:0 0 14px;">
+    The page you’re looking for can’t be found.
+  </p>
+
+  <p class="muted small" style="margin:0 0 14px;">
+    URL: <code id="bad-url">-</code>
+  </p>
+
+  <div style="display:flex; gap:10px; flex-wrap:wrap;">
+    <a class="btn" href="{{ '/' | relative_url }}">Back to Home</a>
+    <button class="btn" type="button" onclick="history.back()">Back</button>
+  </div>
+</div>
+
+{% if site.novels and site.novels.size > 0 %}
+  <div class="card" style="margin-top:14px;">
+    <div class="card-head">
+      <h2 class="card-title">Novel List</h2>
+    </div>
+
+    <ul class="chapter-list" style="padding:8px; margin:0;">
+      {% assign novels_sorted = site.novels | sort: "order" %}
+      {% for n in novels_sorted %}
+        <li class="chapter-item">
+          <a class="chapter-link" href="{{ n.url | relative_url }}">
+            <span style="font-weight:700;">{{ n.title }}</span>
+            {% if n.author %}
+              <span class="muted small">· {{ n.author }}</span>
+            {% endif %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+<script>
+  (function () {
+    var el = document.getElementById("bad-url");
+    if (el) el.textContent = window.location.pathname + window.location.search + window.location.hash;
+  })();
+</script>
