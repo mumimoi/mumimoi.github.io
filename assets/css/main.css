@@ -1,13 +1,13 @@
 /* Minimalis novel/webnovel reader (Jekyll + GitHub Pages) */
 
 :root {
-  --bg: #000000;           /* AMOLED */
+  --bg: #000000;
   --panel: #0b0b0b;
   --panel-2: #101010;
   --text: #eaeaea;
   --muted: #a4a4a4;
   --border: #1c1c1c;
-  --accent: #10a37f;       /* nuansa ChatGPT */
+  --accent: #10a37f;
   --shadow: 0 8px 20px rgba(0,0,0,.35);
 
   --radius: 14px;
@@ -104,11 +104,12 @@ code {
   padding: 16px 0;
 }
 
-.footer-inner {
+.footer-inner{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
+  text-align: center;
 }
 
 .muted { color: var(--muted); }
