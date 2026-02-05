@@ -5,7 +5,7 @@ description: "Minimalis reader untuk manga/webnovel"
 
 # Jika ini Project Site: isi baseurl dengan "/nama-repo"
 # Jika ini User Site (username.github.io): biarkan kosong
-url: ""
+url: "https://mumimoi.github.io"
 baseurl: ""
 
 markdown: kramdown
