@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-# Library
+# List of Novels
 
 <div class="grid">
   {% assign novels_sorted = site.novels | sort: "order" %}
