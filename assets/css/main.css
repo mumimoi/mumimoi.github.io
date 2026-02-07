@@ -313,6 +313,23 @@ code {
   margin: 0;
 }
 
+.novel-cover-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 14px 0 18px;
+}
+
+.novel-cover-page {
+  height: clamp(220px, 40vh, 360px);
+  width: auto;
+
+  max-width: 90%;
+  border-radius: calc(var(--radius) - 4px);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: var(--panel);
+}
+
 .novel-header { margin-bottom: 14px; }
 .novel-title { margin: 0 0 6px; }
 .novel-desc { margin: 10px 0 0; color: var(--muted); }

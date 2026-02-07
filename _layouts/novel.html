@@ -13,6 +13,17 @@ layout: default
 
 <header class="novel-header">
   <h1 class="novel-title">{{ page.title }}</h1>
+
+  {% if page.cover %}
+    <div class="novel-cover-wrap">
+      <img
+        class="novel-cover-page"
+        src="{{ page.cover | relative_url }}"
+        alt="Cover {{ page.title }}"
+        loading="lazy">
+    </div>
+  {% endif %}
+
   {% if page.author %}<div class="muted">{{ page.author }}</div>{% endif %}
   {% if page.description %}<p class="novel-desc">{{ page.description }}</p>{% endif %}
 </header>
