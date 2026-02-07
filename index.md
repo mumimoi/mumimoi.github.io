@@ -17,7 +17,7 @@ title: Home
       {% endif %}
 
       <div class="novel-card-title">{{ n.title }}</div>
-      {% if n.description %}<div class="novel-card-desc">{{ n.description }}</div>{% endif %}
+      {% if n.description %}<div class="novel-card-desc">{{ n.description | truncate: 160 }}</div>{% endif %}
       <div class="novel-card-meta muted small">Klik untuk lihat daftar chapter</div>
     </a>
   {% endfor %}

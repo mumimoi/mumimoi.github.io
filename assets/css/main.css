@@ -274,13 +274,6 @@ code {
 .novel-card-desc {
   color: var(--muted);
   margin-bottom: 10px;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-word;
 }
 
 .novel-cover{
