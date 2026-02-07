@@ -194,12 +194,13 @@
       const y = window.scrollY || 0;
       const dy = y - lastY;
 
-      // dy > 0: scroll turun => sembunyikan pelan-pelan
-      // dy < 0: scroll naik => munculkan pelan-pelan
-      offset = clamp(offset + dy, 0, height);
-
-      // kalau sudah di paling atas, paksa tampil penuh
-      if (y <= 0) offset = 0;
+      if (dy > 0) {
+        // scroll ke bawah → sembunyikan pelan-pelan
+        offset = clamp(offset + dy, 0, height);
+      } else if (dy < 0) {
+        // scroll ke atas → LANGSUNG tampil
+        offset = 0;
+      }
 
       topbar.style.transform = `translateY(${-offset}px)`;
 

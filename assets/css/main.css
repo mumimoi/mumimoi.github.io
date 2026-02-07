@@ -322,12 +322,12 @@ code {
 .novel-cover-page {
   height: clamp(220px, 40vh, 360px);
   width: auto;
-
   max-width: 90%;
   border-radius: calc(var(--radius) - 4px);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   background: var(--panel);
+  transition: transform .15s ease, box-shadow .15s ease;
 }
 
 .novel-header { margin-bottom: 14px; }
