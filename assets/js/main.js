@@ -253,3 +253,18 @@
   // initial
   update();
 })();
+
+(() => {
+  const topbar = document.querySelector(".topbar");
+  if (!topbar) return;
+
+  const setTopbarHeight = () => {
+    document.documentElement.style.setProperty(
+      "--topbar-h",
+      `${topbar.offsetHeight}px`
+    );
+  };
+
+  setTopbarHeight();
+  window.addEventListener("resize", setTopbarHeight);
+})();

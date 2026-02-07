@@ -55,7 +55,7 @@ code {
 }
 
 .page{
-  padding-top: 18px;
+  padding-top: calc(18px + var(--topbar-h));
   padding-bottom: 40px;
 }
 
@@ -72,8 +72,10 @@ code {
 .skip:focus { left: 12px; z-index: 9999; }
 
 .topbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
   border-bottom: 1px solid var(--border);
   background: rgba(0,0,0,.75);
