@@ -79,9 +79,17 @@ code {
   background: rgba(0,0,0,.75);
   backdrop-filter: blur(10px);
   will-change: transform;
-  transform: translateY(0);
+  transition: transform 220ms ease;
 }
 :root[data-theme="light"] .topbar { background: rgba(255,255,255,.85); }
+
+.topbar.is-hidden {
+  transform: translateY(-100%);
+}
+
+.topbar.is-visible {
+  transform: translateY(0);
+}
 
 .topbar-inner{
   display: flex;

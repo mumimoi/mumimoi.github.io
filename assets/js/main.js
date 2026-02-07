@@ -172,20 +172,11 @@
   if (!topbar) return;
 
   let lastY = window.scrollY || 0;
-  let offset = 0; // 0 = tampil penuh, height = hilang penuh
-  let height = topbar.offsetHeight;
-
-  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
-
-  const update = () => {
-    height = topbar.offsetHeight;
-    topbar.style.transform = `translateY(${-offset}px)`;
-  };
-
-  // update awal
-  update();
-
   let ticking = false;
+
+  // state awal
+  topbar.classList.add("is-visible");
+
   window.addEventListener("scroll", () => {
     if (ticking) return;
     ticking = true;
@@ -194,22 +185,20 @@
       const y = window.scrollY || 0;
       const dy = y - lastY;
 
-      if (dy > 0) {
-        // scroll ke bawah → sembunyikan pelan-pelan
-        offset = clamp(offset + dy, 0, height);
+      if (dy > 0 && y > 40) {
+        // scroll ke bawah → hide
+        topbar.classList.add("is-hidden");
+        topbar.classList.remove("is-visible");
       } else if (dy < 0) {
-        // scroll ke atas → LANGSUNG tampil
-        offset = 0;
+        // scroll ke atas → SELALU muncul
+        topbar.classList.remove("is-hidden");
+        topbar.classList.add("is-visible");
       }
-
-      topbar.style.transform = `translateY(${-offset}px)`;
 
       lastY = y;
       ticking = false;
     });
   }, { passive: true });
-
-  window.addEventListener("resize", update);
 })();
 
 (() => {
